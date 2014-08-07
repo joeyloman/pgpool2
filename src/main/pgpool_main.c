@@ -1209,6 +1209,9 @@ static void failover(void)
                     (errmsg("starting promotion. promote host %s(%d)",
 					 BACKEND_INFO(node_id).backend_hostname,
 					 BACKEND_INFO(node_id).backend_port)));
+
+			trigger_failover_command(PRIMARY_NODE_ID, pool_config->failover_command,
+									MASTER_NODE_ID, node_id, PRIMARY_NODE_ID);
 		}
 		else
 		{
